@@ -4,7 +4,8 @@ Created on Wed Nov  9 13:23:32 2022
 
 @author: delas
 """
-
+import os
+from dotenv import load_dotenv
 import requests
 from meteofrance_api import MeteoFranceClient
 message = {
@@ -53,6 +54,6 @@ message['embeds'][0]['fields'][0]['value']= f"min {temp_min} - max {temp_max} "
 message['embeds'][0]['fields'][1]['value']= f" {temps}"
 
 
-
-requests.post('https://discord.com/api/webhooks/1039875501147291688/qTzf_ssvS2Zg_DIEgwckRiUz-6OYnVZNPa2P7OHoWfc5YavzjClhwG4ZHqDdEs7pr7Z2', json= message);
+load_dotenv()
+requests.post(os.getenv("webhook"), json= message);
 
