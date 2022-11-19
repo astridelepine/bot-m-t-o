@@ -49,9 +49,20 @@ temp_min =  my_place_daily_forecast[0]['T']['min']
 temps =  my_place_daily_forecast[0]['weather12H']['desc']
 pluie =  my_place_daily_forecast[0]['precipitation']['24h']
 rain = client.get_rain(latitude= 45.764043, longitude=4.835659)
+def habit(temps) :
+  if temps == "Ensoleillé" :
+    m = "Sortez vous promener !!!!!"
+  elif temps =="Pluie":
+    m = "Aimé prend ta combinaison chausson inclu"
+  else :
+    m = ""
+  return m 
+  
 
+aime = habit(temps)       
 message['embeds'][0]['fields'][0]['value']= f"min {temp_min} - max {temp_max} "
-message['embeds'][0]['fields'][1]['value']= f" {temps}"
+message['embeds'][0]['fields'][1]['value']= f" {temps} \n {habit(temps)}"
+
 
 
 load_dotenv()
