@@ -4,6 +4,7 @@ Created on Wed Nov  9 13:23:32 2022
 
 @author: delas
 """
+from random import *
 import os
 from dotenv import load_dotenv
 import requests
@@ -51,9 +52,13 @@ pluie =  my_place_daily_forecast[0]['precipitation']['24h']
 rain = client.get_rain(latitude= 45.764043, longitude=4.835659)
 def habit(temps) :
   if temps == "Ensoleillé" :
-    m = "Sortez vous promener !!!!!"
+    m = ["Sortez vous promener !!!!!", ""]
   elif temps =="Pluie":
-    m = "Aimé prend ta combinaison chausson inclu"
+    l = ["Aimé prend ta combinaison chausson inclu !!", "Marc sort quand même de ton lit :)", "Sautez dans toutes les flaques que vous voyez", "ce soir c'est raclette partie", "C'est douche gratuite"]
+    n = randint(0,len(l))
+    m = l[n]
+  elif temps == "Eclaircies":
+    li = ["comptez les moutons", "Acceuille heu plus ou moins mitigée",]
   else :
     m = ""
   return m 
