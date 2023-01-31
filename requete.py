@@ -47,26 +47,30 @@ weather_forecast = client.get_forecast_for_place(my_place)
 my_place_daily_forecast = weather_forecast.daily_forecast
 temp_max = my_place_daily_forecast[0]['T']['max']
 temp_min =  my_place_daily_forecast[0]['T']['min']
-temps =  my_place_daily_forecast[0]['weather12H']['desc']
+temps = my_place_daily_forecast[0]['weather12H']['desc']
 pluie =  my_place_daily_forecast[0]['precipitation']['24h']
 rain = client.get_rain(latitude= 45.764043, longitude=4.835659)
-def habit(temps) :
+def scoop(temps) :
   if temps == "Ensoleillé" :
-    m = ["Sortez vous promener !!!!!", ""]
+    l = ["Sortez vous promener !!!!!","police du bonheur souriezzzz"]
+    n = randint(0,len(l)-1)
+    m = l[n]
   elif temps =="Pluie":
     l = ["Aimé prend ta combinaison chausson inclu !!", "Marc sort quand même de ton lit :)", "Sautez dans toutes les flaques que vous voyez", "ce soir c'est raclette partie", "C'est douche gratuite"]
-    n = randint(0,len(l))
+    n = randint(0,len(l)-1)
     m = l[n]
   elif temps == "Eclaircies":
-    li = ["comptez les moutons", "Acceuille heu plus ou moins mitigée",]
+    l = ["comptez les moutons", "Acceuille heu plus ou moins mitigée",]
+    n = randint(0,len(l)-1)
+    m = l[n]
   else :
     m = ""
   return m 
   
 
-aime = habit(temps)       
+aime = scoop(temps)       
 message['embeds'][0]['fields'][0]['value']= f"min {temp_min} - max {temp_max} "
-message['embeds'][0]['fields'][1]['value']= f" {temps} \n {habit(temps)}"
+message['embeds'][0]['fields'][1]['value']= f" {temps} \n {scoop(temps)}"
 
 
 
